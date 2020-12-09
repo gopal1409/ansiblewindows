@@ -1,0 +1,19 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: win4
+    
+    tasks:
+      - name: Install IIS
+        win_feature:
+          name: "Web-Server"
+          state: present
+          restart: yes
+          include_sub_feature: yes
+          include_management_tools: yes
+      - name: Download some simple website
+        win_get_url:
+          url: 'https://raw.githubusercontent.com/thisdavejohnson/mywebapp/master/index.html'
+          dest: 'C:\inetpub\wwwroot\ansible.html'
+      
