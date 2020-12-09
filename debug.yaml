@@ -1,0 +1,11 @@
+---
+# yaml document begin with document seprator
+  - #this minus indicate list of item in python
+    #the target where your play will run
+    hosts: win4
+    
+    tasks:
+      - name: run ipconfig
+        raw: ipconfig
+        register: ipconfig
+      - debug: var=ipconfig
